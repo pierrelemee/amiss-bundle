@@ -23,6 +23,11 @@ class AmissConfiguration implements ConfigurationInterface
                     ->scalarNode('password')->end()
                     ->scalarNode('database')->end()
                     ->integerNode('port')->end()
+                    ->arrayNode('extra')
+                        ->isRequired()
+                        ->requiresAtLeastOneElement()
+                        ->useAttributeAsKey('whatever')
+                        ->prototype('scalar')->end()
                     ->end()
                 ->end()
             ->end();

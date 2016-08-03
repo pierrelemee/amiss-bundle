@@ -20,13 +20,13 @@ class AmissExtension extends Extension
             $definition = new Definition();
             $definition->setClass('Amiss\Sql\Connector');
             $definition->setFactory(array(__CLASS__, 'createConnection'));
-            $definition->setArguments($c);
+            $definition->setArguments([$c]);
             $container->setDefinition(sprintf('amiss.connection.%s', $name), $definition);
 
             $definition = new Definition();
             $definition->setClass('Amiss\Sql\Manager');
             $definition->setFactory(array(__CLASS__, 'createManager'));
-            $definition->setArguments($c);
+            $definition->setArguments([$c]);
             $container->setDefinition(sprintf('amiss.manager.%s', $name), $definition);
         }
 
@@ -41,7 +41,7 @@ class AmissExtension extends Extension
     {
         switch ($options['scheme']) {
             case "mysql":
-                return new Connector(sprintf("mysql:dbname=%s;host=%s;charset=utf8", $options['database'], $options['host']), $options['username'], $options['password']);
+                return new Connector(sprintf("mysql:dbname=%s;host=%s;charset=utf8", $options['database'], $options['host']), $options['username'], $options['password'], $options['extra']);
                 break;
             default:
                 throw new Exception(sprintf("Unknown connection scheme '%s'", $options['scheme']));
@@ -50,9 +50,10 @@ class AmissExtension extends Extension
 
     /**
      * @param array $options
+     * @return Manager
      */
     public static function createManager(array $options)
     {
-        return Amiss::createSqlManager(self::createConnection($options), []);
+        return Amiss::createSqlManager(self::createConnection($options), $options['extra']);
     }
 }
