@@ -1,0 +1,28 @@
+{
+    "name": "pierrelemee/amiss-bundle",
+    "type": "library",
+    "description": "Amiss data mapper bundle for Symfony",
+    "keywords": ["amiss"],
+    "homepage": "https://www.pierrelemee.fr",
+    "license": "MIT",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Pierre Leméer",
+            "email": "pierre@pierrelemee.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/console": "~2.3|~3.0",
+        "symfony/finder": "~2.3|~3.0",
+        "shabbyrobe/amiss": "4.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amiss\\Bundle\\AmissBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev"
+}
