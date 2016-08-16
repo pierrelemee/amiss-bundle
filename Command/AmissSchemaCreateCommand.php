@@ -35,8 +35,8 @@ class AmissSchemaCreateCommand extends ContainerAwareCommand
         $this
             ->setName('amiss:schema:create')
             ->setDescription("Create schema for entities mapped in classes under associated directory")
-            ->addOption('m', 'manager', InputOption::VALUE_REQUIRED, "Name of the manager to use", 'main')
-            ->addOption('r', 'recursive', InputOption::VALUE_NONE, "Recursive")
+            ->addOption('manager', 'm', InputOption::VALUE_REQUIRED, "Name of the manager to use", 'main')
+            ->addOption('recursive', 'r', InputOption::VALUE_NONE, "Recursive")
             ->addArgument('directory', InputArgument::OPTIONAL, "Directory containing all model classes");
     }
 
@@ -45,14 +45,14 @@ class AmissSchemaCreateCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->manager = $this->getContainer()->get(sprintf('amiss.manager.%s', $input->getOption('m')));
+        $this->manager = $this->getContainer()->get(sprintf('amiss.manager.%s', $input->getOption('manager')));
         $directory = $input->hasArgument('directory') ? $input->getArgument('directory') : $this->getContainer()->get('kernel')->getRootDir() . "/../src";
         $classes = $this->getClassesInDir($directory);
         $count = 0;
         $output->writeln("Creating table(s) for:");
         foreach ($classes as $class) {
             try {
-                $tableBuilder = new TableBuilder($this->getDataMapper(), $class);
+                $tableBuilder = new TableBuilder($this->manager, $class);
                 $tableBuilder->createTable();
                 $output->writeln(sprintf("  - <comment>%s</comment> <info>OK</info>", $class));
                 $count++;
@@ -65,14 +65,6 @@ class AmissSchemaCreateCommand extends ContainerAwareCommand
             }
         }
         $output->writeln(sprintf("Created <info>%d</info> table%s successfully", $count, $count > 1 ? "s" : ""));
-    }
-
-    /**
-     * @return Manager
-     */
-    protected function getDataMapper()
-    {
-        return ;
     }
 
     protected function getClassesInDir($directory)
