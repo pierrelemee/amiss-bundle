@@ -2,7 +2,9 @@
     "name": "pierrelemee/amiss-bundle",
     "type": "library",
     "description": "Amiss data mapper bundle for Symfony",
-    "keywords": ["amiss"],
+    "keywords": [
+        "amiss"
+    ],
     "homepage": "https://www.pierrelemee.fr",
     "license": "MIT",
     "version": "0.1.1",
@@ -12,12 +14,19 @@
             "email": "pierre@pierrelemee.fr"
         }
     ],
+    "reference": "toto",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/pierrelemee/amiss"
+        }
+    ],
     "require": {
         "php": ">=5.3.9",
         "symfony/framework-bundle": "~2.3|~3.0",
         "symfony/console": "~2.3|~3.0",
         "symfony/finder": "~2.3|~3.0",
-        "shabbyrobe/amiss": "4.2.0"
+        "shabbyrobe/amiss": "dev-use-primary-when-saving-23"
     },
     "autoload": {
         "psr-4": {
