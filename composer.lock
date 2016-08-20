@@ -345,12 +345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pierrelemee/amiss.git",
-                "reference": "ebc6a070bb9a27b002272e7fdb6a4bf39c9d6f00"
+                "reference": "2ca2ae8933c17b804ffa2230103e34616239cefd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pierrelemee/amiss/zipball/ebc6a070bb9a27b002272e7fdb6a4bf39c9d6f00",
-                "reference": "ebc6a070bb9a27b002272e7fdb6a4bf39c9d6f00",
+                "url": "https://api.github.com/repos/pierrelemee/amiss/zipball/2ca2ae8933c17b804ffa2230103e34616239cefd",
+                "reference": "2ca2ae8933c17b804ffa2230103e34616239cefd",
                 "shasum": ""
             },
             "require": {
@@ -370,8 +370,8 @@
             ],
             "authors": [
                 {
-                    "name": "Blake Williams",
-                    "email": "code@k3jw.com"
+                    "name": "Pierre Lemée",
+                    "email": "pierre@pierrelemee.fr"
                 }
             ],
             "description": "Data Mapper and Active Record implementation for MySQL and SQLite",
@@ -385,9 +385,9 @@
                 "sql"
             ],
             "support": {
-                "source": "https://github.com/pierrelemee/amiss/tree/master"
+                "source": "https://github.com/pierrelemee/amiss/tree/use-primary-when-saving-23"
             },
-            "time": "2016-08-16 21:02:30"
+            "time": "2016-08-20 17:38:50"
         },
         {
             "name": "symfony/asset",
